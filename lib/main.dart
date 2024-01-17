@@ -1,8 +1,10 @@
-
-
+import 'package:timezone/data/latest_10y.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notification/homescreen.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+
+// import 'package:timezone/timezone.dart';
 
 
 FlutterLocalNotificationsPlugin notificationsPlugin = FlutterLocalNotificationsPlugin();
@@ -11,6 +13,8 @@ FlutterLocalNotificationsPlugin notificationsPlugin = FlutterLocalNotificationsP
 void main()  async{
 
 WidgetsFlutterBinding.ensureInitialized();
+initializeTimeZones();
+
 
 AndroidInitializationSettings androidSettings = AndroidInitializationSettings("@mipmap/ic_launcher");
 

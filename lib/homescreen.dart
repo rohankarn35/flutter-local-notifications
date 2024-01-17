@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notification/main.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:timezone/timezone.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -34,11 +35,15 @@ class _HomeScreenState extends State<HomeScreen> {
         NotificationDetails notificationDetails = NotificationDetails(
           android: androidDetails,
         );
-        await notificationsPlugin.show(
+        DateTime scheduledtime = DateTime.now().add(Duration(seconds: 5));
+        await notificationsPlugin.zonedSchedule(
           0,
           "Class Remainder",
           "Class Jao Salo",
+          TZDateTime.from(scheduledtime,local),
           notificationDetails,
+          uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.wallClockTime,
+         
         );
       }
     }
